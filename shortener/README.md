@@ -29,3 +29,30 @@ CREATE TABLE `short_url_map` (
     UNIQUE(`surl`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='长短链映射表';
 ```
+
+2.搭建go-zero框架的骨架
+
+编写`api`文件，使用goctl命令生成代码
+```api
+goctl api go -api shortener.api -dir .
+```
+
+3.根据数据表生成model层代码
+```bash
+goctl model mysql datasource -url ="root:root@tcp(127.0.0.1:3306)/short-link" -table="short_url_map" -dir="./model"
+```
+
+4.下载项目依赖
+```bash
+go mod tidy
+```
+
+5.运行项目
+```bash
+go run shortener.go
+```
+
+6.修改配置结构体和配置文件
+
+## 参数校验
+使用validator库
