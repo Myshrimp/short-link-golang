@@ -69,6 +69,14 @@ func (l *ConvertLogic) Convert(req *types.ConvertRequest) (resp *types.ConvertRe
 	}
 	
 	// 2. generate a unique id for the long url
+	// for each convert request, we use REPLACE INTO to insert a new record into the database, and the id will be auto-incremented by the database, so we can get a unique id for each long url
+	seq , err := l.svcCtx.Sequence.Next()
+	if err != nil {
+		logx.Errorw("Sequence.Next failed", logx.LogField{Key: "err", Value: err})
+		return nil, err
+	}
+	logx.Infow("get sequence", logx.LogField{Key: "seq", Value: seq})
+	
 	// 3. convert the long url to a short url and return it
 	// 4. store the mapping of the long url and the short url in the database
 	// 5. return the short url to the client
