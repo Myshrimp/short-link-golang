@@ -6,3 +6,6 @@ ShortUrlDB:
 
 Sequence:
   DSN: "root:@tcp(localhost:3306)/short-link?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai"
+
+ShortUrlBlacklist: ["bad", "offensive", "inappropriate", "version", "convert", "css", "js", "api", "admin", "login", "register", "user", "profile", "settings", "dashboard", "home", "index", "about", "contact", "help", "support", "terms", "privacy", "policy"]
+Domain: "shrimp.cn"

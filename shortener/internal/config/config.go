@@ -12,4 +12,7 @@ type Config struct {
 	Sequence struct {
 		DSN string //data source name
 	}
+
+	ShortUrlBlacklist []string
+	Domain string
 }
