@@ -1,10 +1,14 @@
 package config
 
-import "github.com/zeromicro/go-zero/rest"
+import (
+	"github.com/zeromicro/go-zero/core/stores/cache"
+	"github.com/zeromicro/go-zero/rest"
+)
 
 type Config struct {
 	rest.RestConf
-	
+	CacheRedis cache.CacheConf
+
 	ShortUrlDB struct {
 		DSN string //data source name
 	}
@@ -14,5 +18,5 @@ type Config struct {
 	}
 
 	ShortUrlBlacklist []string
-	Domain string
+	Domain            string
 }

@@ -39,7 +39,7 @@ goctl api go -api shortener.api -dir .
 
 3.根据数据表生成model层代码
 ```bash
-goctl model mysql datasource -url ="root:root@tcp(127.0.0.1:3306)/short-link" -table="short_url_map" -dir="./model"
+goctl model mysql datasource -url="root:@tcp(127.0.0.1:3306)/short-link" -table="short_url_map" -dir="./model" 
 ```
 
 4.下载项目依赖

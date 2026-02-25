@@ -1,6 +1,9 @@
 Name: shortener-api
 Host: 0.0.0.0
 Port: 8888
+CacheRedis:
+  - Host: 127.0.0.1:6379
+  
 ShortUrlDB:
   DSN: "root:@tcp(localhost:3306)/short-link?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai"
 
