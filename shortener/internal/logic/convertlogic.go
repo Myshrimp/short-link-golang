@@ -105,6 +105,13 @@ func (l *ConvertLogic) Convert(req *types.ConvertRequest) (resp *types.ConvertRe
 		return nil, err
 	}
 
+	// 4.1 add short url to bloom filter
+	if err := l.svcCtx.Filter.Add([]byte(shortUrl)); err != nil {
+		logx.Errorw("bloom filter add failed", logx.LogField{Key: "err", Value: err})
+		return nil, err
+	}
+
+	// 5. return the short url
 	shortUrl = l.svcCtx.Config.Domain + "/" + shortUrl
 	resp = &types.ConvertResponse{
 		ShortUrl: shortUrl,
